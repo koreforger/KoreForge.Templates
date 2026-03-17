@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageId>KoreForge.Templates</PackageId>
+    <Title>KoreForge Templates</Title>
+    <Authors>KoreForge</Authors>
+    <Description>dotnet new templates for KoreForge applications.</Description>
+    <PackageTags>KoreForge;dotnet-new;template;kafka;vue;dashboard</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/koreforger/KoreForge.Templates</RepositoryUrl>
+    <!-- Template packs have no compilable source; suppress SDK defaults. -->
+    <TargetFramework>net10.0</TargetFramework>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <!-- Suppress standard build artefacts we don't need. -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <!-- ── KafkaProcessor template ──────────────────────────────────────────
+       Source lives in apps/EventProcessor so that the app itself is always
+       the golden master.  When EventProcessor improves, bump the version
+       and run bin/pack.ps1 to produce an updated .nupkg.
+  ──────────────────────────────────────────────────────────────────────── -->
+  <ItemGroup>
+    <Content Include="..\apps\EventProcessor\**\*"
+             Exclude="..\apps\EventProcessor\.git\**;
+                      ..\apps\EventProcessor\bin\**;
+                      ..\apps\EventProcessor\obj\**;
+                      ..\apps\EventProcessor\artifacts\**;
+                      ..\apps\EventProcessor\.vs\**;
+                      ..\apps\EventProcessor\**\bin\**;
+                      ..\apps\EventProcessor\**\obj\**;
+                      ..\apps\EventProcessor\**\artifacts\**;
+                      ..\apps\EventProcessor\**\node_modules\**;
+                      ..\apps\EventProcessor\**\TestResults\**;
+                      ..\apps\EventProcessor\**\*.user;
+                      ..\apps\EventProcessor\package-lock.json;
+                      ..\apps\EventProcessor\ws-status.txt">
+      <PackagePath>content/KafkaProcessor/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    </Content>
+  </ItemGroup>
+
+</Project>
