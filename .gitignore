@@ -1,6 +1,6 @@
 ## .NET build outputs
-bin/
-!/bin/
+bin/Debug/
+bin/Release/
 obj/
 out/
 artifacts/*.nupkg
