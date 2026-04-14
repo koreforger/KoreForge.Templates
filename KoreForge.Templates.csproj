@@ -6,7 +6,7 @@
     <Title>KoreForge Templates</Title>
     <Authors>KoreForge</Authors>
     <Description>dotnet new templates for KoreForge applications.</Description>
-    <PackageTags>KoreForge;dotnet-new;template;kafka;vue;dashboard</PackageTags>
+    <PackageTags>KoreForge;dotnet-new;template;kafka;vue;dashboard;data;efcore;odata</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/koreforger/KoreForge.Templates</RepositoryUrl>
     <!-- Template packs have no compilable source; suppress SDK defaults. -->
@@ -42,6 +42,32 @@
                       ..\apps\EventProcessor\package-lock.json;
                       ..\apps\EventProcessor\ws-status.txt">
       <PackagePath>content/KafkaProcessor/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <!-- ── kf-data template ─────────────────────────────────────────────── -->
+  <ItemGroup>
+    <Content Include="templates\kf-data\**\*"
+             Exclude="templates\kf-data\**\bin\**;
+                      templates\kf-data\**\obj\**;
+                      templates\kf-data\**\artifacts\**;
+                      templates\kf-data\**\.vs\**;
+                      templates\kf-data\**\*.user;
+                      templates\kf-data\**\TestResults\**">
+      <PackagePath>content/kf-data/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <!-- ── kf-odata template ────────────────────────────────────────────── -->
+  <ItemGroup>
+    <Content Include="templates\kf-odata\**\*"
+             Exclude="templates\kf-odata\**\bin\**;
+                      templates\kf-odata\**\obj\**;
+                      templates\kf-odata\**\artifacts\**;
+                      templates\kf-odata\**\.vs\**;
+                      templates\kf-odata\**\*.user;
+                      templates\kf-odata\**\TestResults\**">
+      <PackagePath>content/kf-odata/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
   </ItemGroup>
 

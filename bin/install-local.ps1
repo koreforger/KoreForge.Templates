@@ -1,16 +1,27 @@
 <#
 .SYNOPSIS
-    Installs the KafkaProcessor template directly from the local EventProcessor source folder.
+    Installs all KoreForge templates directly from local source folders.
     No pack step required — changes to the source are immediately available.
 #>
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$templateSource = Resolve-Path (Join-Path $PSScriptRoot "..\..\apps\EventProcessor")
-Write-Host "Installing template from: $templateSource" -ForegroundColor Cyan
-dotnet new install $templateSource
-if ($LASTEXITCODE -eq 0) {
+$repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+
+$templates = @(
+    @{ Name = "kf-kafka-processor"; Path = Resolve-Path (Join-Path $repoRoot "..\apps\EventProcessor") },
+    @{ Name = "kf-data";            Path = Join-Path $repoRoot "templates\kf-data" },
+    @{ Name = "kf-odata";           Path = Join-Path $repoRoot "templates\kf-odata" }
+)
+
+foreach ($t in $templates) {
+    Write-Host "Installing $($t.Name) from: $($t.Path)" -ForegroundColor Cyan
+    dotnet new install $t.Path
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Failed to install $($t.Name)"
+    }
     Write-Host ""
-    Write-Host "✓ Template installed. Scaffold a new app with:" -ForegroundColor Green
-    Write-Host "  dotnet new kf-kafka-processor -n MyApp" -ForegroundColor White
 }
+
+Write-Host "Done. Available templates:" -ForegroundColor Green
+dotnet new list kf

@@ -1,85 +1,98 @@
 # KoreForge.Templates
 
-NuGet template package providing `dotnet new` scaffolding for KoreForge applications.
+NuGet template package providing `dotnet new` scaffolding for KoreForge applications and libraries.
 
-## Available templates
+## Available Templates
 
-| Short name | Description |
-|---|---|
-| `kf-kafka-processor` | Kafka consumer with Vue 3 dashboard, SignalR metrics, SQL live-reload settings, structured logging, health checks |
+| Short name | Type | Description |
+|---|---|---|
+| `kf-kafka-processor` | Solution | Kafka consumer with Vue 3 dashboard, SignalR metrics, SQL live-reload settings, structured logging, health checks |
+| `kf-data` | Solution | EF Core data library with database-first scaffolding, partial DbContext, options, and DI registration |
+| `kf-odata` | Solution | OData controller library with Roslyn source-generated CRUD controllers from a DbContext |
 
-## Usage
-
-### Install from NuGet
+## Install
 
 ```powershell
 dotnet new install KoreForge.Templates
 ```
 
-### Scaffold a new application
+## Usage
+
+### Kafka Processor
 
 ```powershell
-# Minimal — renames everything from EventProcessor → MyApp
-dotnet new kf-kafka-processor -n MyApp
-
-# With explicit Kafka topic and database name
-dotnet new kf-kafka-processor -n OrderProcessor --KafkaTopic orders --DatabaseName OrderDb
+dotnet new kf-kafka-processor -n MyApp --KafkaTopic orders --DatabaseName OrderDb
 ```
-
-After scaffolding:
-
-```powershell
-cd MyApp
-dotnet restore
-cd dashboard && npm install && cd ..
-```
-
-### Parameters
 
 | Parameter | Default | Description |
 |---|---|---|
-| `-n / --name` | _(required)_ | Application name. Replaces `EventProcessor` everywhere — files, folders, namespaces, appsettings. |
-| `--KafkaTopic` | `transactions` | Kafka topic to consume from. |
-| `--DatabaseName` | `FraudEngine` | SQL Server database name in the connection string. |
+| `-n` | _(required)_ | Application name (replaces `EventProcessor` everywhere) |
+| `--KafkaTopic` | `transactions` | Kafka topic to consume |
+| `--DatabaseName` | `FraudEngine` | SQL Server database name |
+
+### Data Library
+
+```powershell
+dotnet new kf-data -n MyCompany.Data.Staff --DatabaseShort Staff
+```
+
+| Parameter | Default | Description |
+|---|---|---|
+| `-n` | _(required)_ | Project name and namespace (replaces `KF.Data.Alerts`) |
+| `--DatabaseShort` | `Alerts` | Short name for DbContext, options, methods (e.g. `Staff` → `StaffDbContext`) |
+
+After scaffolding, edit `config/scaffold-config.json` with your connection string and schemas, then run:
+
+```powershell
+./scripts/scaffold-db.ps1
+```
+
+### OData Library
+
+```powershell
+dotnet new kf-odata -n MyCompany.OData.Staff --DatabaseShort Staff --DataNamespace MyCompany.Data.Staff
+```
+
+| Parameter | Default | Description |
+|---|---|---|
+| `-n` | _(required)_ | Project name and namespace (replaces `KF.OData.Alerts`) |
+| `--DatabaseShort` | `Alerts` | Short name matching Data library (e.g. `Staff` → `StaffDbContext`) |
+| `--DataNamespace` | `KF.Data.Alerts` | Full namespace of the Data library where the DbContext lives |
+
+After scaffolding, add a `ProjectReference` to your Data library in the `.csproj`, build, then run:
+
+```powershell
+./scripts/scaffold-odata.ps1
+```
 
 ---
 
-## Development workflow — maintaining the templates
+## Development Workflow
 
-The template source is the **EventProcessor** app itself (`apps/EventProcessor/`).  
-The app is the golden master; the template pack just wraps it.
+### Template Sources
 
-```
-apps/EventProcessor/           ← live app AND template source
-    .template.config/
-        template.json          ← template definition (params, exclusions)
+| Template | Source Location |
+|---|---|
+| `kf-kafka-processor` | `apps/EventProcessor/` (golden master — live app IS the template) |
+| `kf-data` | `templates/kf-data/` (standalone template archetype) |
+| `kf-odata` | `templates/kf-odata/` (standalone template archetype) |
 
-KoreForge.Templates/
-    KoreForge.Templates.csproj ← NuGet pack project (references EventProcessor files)
-    Directory.Build.props      ← version
-    bin/
-        install-local.ps1      ← install template directly from source folder
-        uninstall-local.ps1
-        pack.ps1               ← produce .nupkg → artifacts/
-```
-
-### Improve and release a new version
-
-1. Improve `apps/EventProcessor/` (fix, add feature, improve dashboard…)
-2. Bump `PackageVersion` in `Directory.Build.props`
-3. Run `bin/pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
-4. Publish to NuGet: `dotnet nuget push artifacts/*.nupkg --source nuget.org --api-key <key>`
-5. Commit, tag, push
-
-### Local development install (no NuGet publish required)
+### Local Development Install
 
 ```powershell
-# Install directly from the source folder — picks up live changes
+# Install all templates directly from source folders
 ./bin/install-local.ps1
 
 # Test scaffolding
-dotnet new kf-kafka-processor -n TestApp -o /tmp/TestApp
+dotnet new kf-data -n TestData --DatabaseShort Test -o /tmp/TestData
+dotnet new kf-odata -n TestOData --DatabaseShort Test --DataNamespace TestData -o /tmp/TestOData
 
 # Uninstall when done
 ./bin/uninstall-local.ps1
 ```
+
+### Pack and Release
+
+1. Bump `PackageVersion` in `Directory.Build.props`
+2. Run `bin/pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
+3. Publish to NuGet or let the GitHub Actions workflow handle Trusted Publishing
