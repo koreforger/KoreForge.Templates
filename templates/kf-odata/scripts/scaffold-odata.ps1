@@ -14,7 +14,7 @@
 
 .EXAMPLE
     .\scripts\scaffold-odata.ps1
-    .\scripts\scaffold-odata.ps1 -AssemblyPath bin\Release\net10.0\MyApp.OData.dll
+    .\scripts\scaffold-odata.ps1 -AssemblyPath scr\\Release\net10.0\MyApp.OData.dll
 #>
 param(
     [string]$AssemblyPath
@@ -32,7 +32,7 @@ if (-not $srcDir) {
 }
 
 if (-not $AssemblyPath) {
-    $expectedDll = Join-Path $srcDir.FullName "bin\Debug\net10.0\$($srcDir.Name).dll"
+    $expectedDll = Join-Path $srcDir.FullName "scr\\Debug\net10.0\$($srcDir.Name).dll"
     if (Test-Path $expectedDll) {
         $AssemblyPath = $expectedDll
     } else {

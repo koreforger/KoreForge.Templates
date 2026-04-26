@@ -81,18 +81,18 @@ After scaffolding, add a `ProjectReference` to your Data library in the `.csproj
 
 ```powershell
 # Install all templates directly from source folders
-./bin/install-local.ps1
+./scr/install-local.ps1
 
 # Test scaffolding
 dotnet new kf-data -n TestData --DatabaseShort Test -o /tmp/TestData
 dotnet new kf-odata -n TestOData --DatabaseShort Test --DataNamespace TestData -o /tmp/TestOData
 
 # Uninstall when done
-./bin/uninstall-local.ps1
+./scr/uninstall-local.ps1
 ```
 
 ### Pack and Release
 
 1. Bump `PackageVersion` in `Directory.Build.props`
-2. Run `bin/pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
+2. Run `scr/pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
 3. Publish to NuGet or let the GitHub Actions workflow handle Trusted Publishing
