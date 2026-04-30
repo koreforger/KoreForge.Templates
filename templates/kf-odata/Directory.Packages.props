@@ -6,8 +6,8 @@
 
   <!-- KoreForge OData packages -->
   <ItemGroup>
-    <PackageVersion Include="KoreForge.OData"            Version="0.0.*-*" />
-    <PackageVersion Include="KoreForge.OData.Generators" Version="0.0.*-*" />
+    <PackageVersion Include="KoreForge.OData"            Version="0.0.5-alpha" />
+    <PackageVersion Include="KoreForge.OData.Generators" Version="0.0.5-alpha" />
   </ItemGroup>
 
   <!-- Test packages -->

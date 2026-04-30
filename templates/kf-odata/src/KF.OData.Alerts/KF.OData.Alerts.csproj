@@ -12,17 +12,20 @@
 
   <ItemGroup>
     <PackageReference Include="KoreForge.OData" />
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj')">
+    <ProjectReference Include="..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj')">
     <PackageReference Include="KoreForge.OData.Generators"
                       OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
-  <!--
-    Add a ProjectReference to your KoreForge Data library so the source
-    generator can see the DbContext type.  Example:
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\path\to\KF.Data.Alerts\KF.Data.Alerts.csproj" />
-    </ItemGroup>
-  -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\kf-data\src\KF.Data.Alerts\KF.Data.Alerts.csproj" />
+  </ItemGroup>
 
 </Project>
