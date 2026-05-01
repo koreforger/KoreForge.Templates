@@ -15,8 +15,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="Exists('..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj')">
-    <ProjectReference Include="..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj"
-                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="KoreForge.OData.Generators" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('..\..\..\..\KoreForge.OData\src\KF.OData.Generators\KF.OData.Generators.csproj')">
@@ -25,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\kf-data\src\KF.Data.Alerts\KF.Data.Alerts.csproj" />
+    <PackageReference Include="KF.Data.Alerts" VersionOverride="1.0.1-alpha" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KF.OData.Alerts\KF.OData.Alerts.csproj" />
+    <PackageReference Include="KF.OData.Alerts" VersionOverride="1.0.1-alpha" />
   </ItemGroup>
 
 </Project>

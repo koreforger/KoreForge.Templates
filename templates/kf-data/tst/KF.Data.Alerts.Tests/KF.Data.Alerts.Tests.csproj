@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KF.Data.Alerts\KF.Data.Alerts.csproj" />
+    <PackageReference Include="KF.Data.Alerts" VersionOverride="1.0.1-alpha" />
   </ItemGroup>
 
 </Project>
