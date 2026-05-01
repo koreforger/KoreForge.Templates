@@ -24,7 +24,7 @@ A KoreForge OData controller library that generates CRUD controllers from `Alert
 
 3. **Scaffold partial controllers** for customisation:
    ```powershell
-   ./scripts/scaffold-odata.ps1
+   ./scr/scaffold-odata.ps1
    ```
 
 4. **Register OData** in your host application:
@@ -38,7 +38,7 @@ A KoreForge OData controller library that generates CRUD controllers from `Alert
 |------|---------|
 | `src/KF.OData.Alerts/AssemblyAttributes.cs` | Wires `[GenerateODataFor(typeof(AlertsDbContext))]` |
 | `src/KF.OData.Alerts/Controllers/` | Partial controller extensions (hand-edited) |
-| `scripts/scaffold-odata.ps1` | Generates partial controller stubs after first build |
+| `scr/scaffold-odata.ps1` | Generates partial controller stubs after first build |
 | `tst/KF.OData.Alerts.Tests/` | Unit tests |
 
 ## How It Works
@@ -50,3 +50,4 @@ The `KoreForge.OData.Generators` Roslyn source generator reads `[GenerateODataFo
 - Schema-aware routing (entities in named schemas get route prefixes)
 - Row-level filtering via `IRowLevelFilterProvider`
 - Virtual hooks for pre/post processing
+

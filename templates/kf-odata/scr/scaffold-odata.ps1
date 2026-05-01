@@ -13,8 +13,8 @@
     Defaults to the first DLL found under the src project's bin/Debug/net10.0/.
 
 .EXAMPLE
-    .\scripts\scaffold-odata.ps1
-    .\scripts\scaffold-odata.ps1 -AssemblyPath scr\\Release\net10.0\MyApp.OData.dll
+    .\scr\scaffold-odata.ps1
+    .\scr\scaffold-odata.ps1 -AssemblyPath scr\\Release\net10.0\MyApp.OData.dll
 #>
 param(
     [string]$AssemblyPath
@@ -120,3 +120,4 @@ if ($created -gt 0) {
 } else {
     Write-Host "No new controller stubs needed." -ForegroundColor Yellow
 }
+

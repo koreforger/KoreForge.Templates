@@ -13,7 +13,7 @@ A KoreForge data library for the AlertsDB database, built with EF Core database-
 
 3. **Scaffold entities**:
    ```powershell
-   ./scripts/scaffold-db.ps1
+   ./scr/scaffold-db.ps1
    ```
 
 4. **Build**:
@@ -35,7 +35,7 @@ A KoreForge data library for the AlertsDB database, built with EF Core database-
 | `src/KF.Data.Alerts/AlertsDbServiceCollectionExtensions.cs` | DI registration extensions |
 | `src/KF.Data.Alerts/Generated/` | Scaffold output — do not edit by hand |
 | `config/scaffold-config.json` | Scaffold configuration (connection, schemas, tables) |
-| `scripts/scaffold-db.ps1` | Scaffold automation script |
+| `scr/scaffold-db.ps1` | Scaffold automation script |
 | `tst/KF.Data.Alerts.Tests/` | Unit tests |
 
 ## Scaffold Configuration
@@ -47,4 +47,5 @@ Edit `config/scaffold-config.json` to configure:
 - **outputDir / contextDir** — where generated files go
 - **namespace / contextNamespace** — C# namespaces for generated code
 
-Re-run `scripts/scaffold-db.ps1` whenever the database schema changes.
+Re-run `scr/scaffold-db.ps1` whenever the database schema changes.
+

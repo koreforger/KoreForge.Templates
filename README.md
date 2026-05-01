@@ -44,7 +44,7 @@ dotnet new kf-data -n MyCompany.Data.Staff --DatabaseShort Staff
 After scaffolding, edit `config/scaffold-config.json` with your connection string and schemas, then run:
 
 ```powershell
-./scripts/scaffold-db.ps1
+./scr/scaffold-db.ps1
 ```
 
 ### OData Library
@@ -62,7 +62,7 @@ dotnet new kf-odata -n MyCompany.OData.Staff --DatabaseShort Staff --DataNamespa
 After scaffolding, add a `ProjectReference` to your Data library in the `.csproj`, build, then run:
 
 ```powershell
-./scripts/scaffold-odata.ps1
+./scr/scaffold-odata.ps1
 ```
 
 ---
@@ -94,5 +94,7 @@ dotnet new kf-odata -n TestOData --DatabaseShort Test --DataNamespace TestData -
 ### Pack and Release
 
 1. Bump `PackageVersion` in `Directory.Build.props`
-2. Run `scr/pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
+2. Run `scr/build-pack.ps1` → produces `artifacts/KoreForge.Templates.<version>.nupkg`
 3. Publish to NuGet or let the GitHub Actions workflow handle Trusted Publishing
+
+
