@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "KoreForge",
+  "classifications": [ "Library", "OData", "EFCore", "KoreForge" ],
+  "identity": "KoreForge.Templates.OData",
+  "name": "KoreForge OData Library",
+  "shortName": "koreforge-odata",
+  "description": "A KoreForge OData controller library that generates CRUD controllers from a DbContext via Roslyn source generator. Pair with a koreforge-data project.",
+  "sourceName": "KoreForge.OData.Alerts",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "symbols": {
+    "DatabaseShort": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Short database name matching the Data library (e.g. Staff -> StaffDbContext).",
+      "defaultValue": "Alerts",
+      "replaces": "Alerts",
+      "fileRename": "Alerts"
+    },
+    "DataNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Full namespace of the KoreForge Data library where the DbContext lives (e.g. MyCompany.Data.Staff).",
+      "defaultValue": "KoreForge.Data.Alerts",
+      "replaces": "KoreForge.Data.Alerts"
+    }
+  },
+  "sources": [
+    {
+      "rename": {
+        "scr/scaffold-odata.ps1.txt": "scr/scaffold-odata.ps1"
+      },
+      "exclude": [
+        ".template.config/**",
+        "**/bin/**",
+        "**/obj/**",
+        "**/artifacts/**",
+        "**/.vs/**",
+        "**/*.user",
+        "**/TestResults/**"
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Restore NuGet packages",
+      "manualInstructions": [ { "text": "Run 'dotnet restore'" } ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "args": {
+        "files": [ "src/**/*.csproj", "tst/**/*.csproj" ]
+      },
+      "continueOnError": true
+    }
+  ]
+}

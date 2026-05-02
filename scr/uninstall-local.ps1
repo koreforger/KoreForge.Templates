@@ -8,9 +8,9 @@ $ErrorActionPreference = 'Stop'
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 
 $templates = @(
-    @{ Name = "kf-kafka-processor"; Path = Resolve-Path (Join-Path $repoRoot "..\apps\EventProcessor") },
-    @{ Name = "kf-data";            Path = Join-Path $repoRoot "templates\kf-data" },
-    @{ Name = "kf-odata";           Path = Join-Path $repoRoot "templates\kf-odata" }
+    @{ Name = "koreforge-kafka-processor"; Path = Resolve-Path (Join-Path $repoRoot "..\apps\EventProcessor") },
+    @{ Name = "koreforge-data";            Path = Join-Path $repoRoot "templates\koreforge-data" },
+    @{ Name = "koreforge-odata";           Path = Join-Path $repoRoot "templates\koreforge-odata" }
 )
 
 foreach ($t in $templates) {

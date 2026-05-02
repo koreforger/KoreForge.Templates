@@ -1,0 +1,18 @@
+{
+  "databases": [
+    {
+      "name": "AlertsDB",
+      "connectionString": "Server=localhost;Database=AlertsDB;Trusted_Connection=True;TrustServerCertificate=True;",
+      "provider": "Microsoft.EntityFrameworkCore.SqlServer",
+      "context": "AlertsDbContext",
+      "outputDir": "src/KoreForge.Data.Alerts/Generated",
+      "contextDir": "src/KoreForge.Data.Alerts/Generated",
+      "namespace": "KoreForge.Data.Alerts",
+      "contextNamespace": "KoreForge.Data.Alerts",
+      "schemas": [],
+      "tables": [],
+      "useDatabaseNames": true,
+      "noOnConfiguring": true
+    }
+  ]
+}

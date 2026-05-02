@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/KoreForge.Data.Alerts/KoreForge.Data.Alerts.csproj" />
+  </Folder>
+  <Folder Name="/tst/">
+    <Project Path="tst/KoreForge.Data.Alerts.Tests/KoreForge.Data.Alerts.Tests.csproj" />
+  </Folder>
+</Solution>

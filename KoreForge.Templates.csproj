@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <PackageId>KoreForge.Templates</PackageId>
@@ -19,56 +18,28 @@
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-
   <!-- ── KafkaProcessor template ──────────────────────────────────────────
        Source lives in apps/EventProcessor so that the app itself is always
        the golden master.  When EventProcessor improves, bump the version
        and run bin/pack.ps1 to produce an updated .nupkg.
   ──────────────────────────────────────────────────────────────────────── -->
   <ItemGroup>
-    <Content Include="..\apps\EventProcessor\**\*"
-             Exclude="..\apps\EventProcessor\.git\**;
-                      ..\apps\EventProcessor\bin\**;
-                      ..\apps\EventProcessor\obj\**;
-                      ..\apps\EventProcessor\artifacts\**;
-                      ..\apps\EventProcessor\.vs\**;
-                      ..\apps\EventProcessor\**\bin\**;
-                      ..\apps\EventProcessor\**\obj\**;
-                      ..\apps\EventProcessor\**\artifacts\**;
-                      ..\apps\EventProcessor\**\node_modules\**;
-                      ..\apps\EventProcessor\**\TestResults\**;
-                      ..\apps\EventProcessor\**\*.user;
-                      ..\apps\EventProcessor\package-lock.json;
-                      ..\apps\EventProcessor\ws-status.txt">
+    <Content Include="..\apps\EventProcessor\**\*" Exclude="..\apps\EventProcessor\.git\**;                       ..\apps\EventProcessor\bin\**;                       ..\apps\EventProcessor\obj\**;                       ..\apps\EventProcessor\artifacts\**;                       ..\apps\EventProcessor\.vs\**;                       ..\apps\EventProcessor\**\bin\**;                       ..\apps\EventProcessor\**\obj\**;                       ..\apps\EventProcessor\**\artifacts\**;                       ..\apps\EventProcessor\**\node_modules\**;                       ..\apps\EventProcessor\**\TestResults\**;                       ..\apps\EventProcessor\**\*.user;                       ..\apps\EventProcessor\package-lock.json;                       ..\apps\EventProcessor\ws-status.txt">
       <PackagePath>content/KafkaProcessor/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
   </ItemGroup>
-
-  <!-- ── kf-data template ─────────────────────────────────────────────── -->
+  <!-- ── koreforge-data template ─────────────────────────────────────────────── -->
   <ItemGroup>
-    <Content Include="templates\kf-data\**\*"
-             Exclude="templates\kf-data\**\bin\**;
-                      templates\kf-data\**\obj\**;
-                      templates\kf-data\**\artifacts\**;
-                      templates\kf-data\**\.vs\**;
-                      templates\kf-data\**\*.user;
-                      templates\kf-data\**\TestResults\**">
-      <PackagePath>content/kf-data/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    <Content Include="templates\koreforge-data\**\*" Exclude="templates\koreforge-data\**\bin\**;                       templates\koreforge-data\**\obj\**;                       templates\koreforge-data\**\artifacts\**;                       templates\koreforge-data\**\.vs\**;                       templates\koreforge-data\**\*.user;                       templates\koreforge-data\**\TestResults\**">
+      <PackagePath>content/koreforge-data/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
   </ItemGroup>
-
-  <!-- ── kf-odata template ────────────────────────────────────────────── -->
+  <!-- ── koreforge-odata template ────────────────────────────────────────────── -->
   <ItemGroup>
-    <Content Include="templates\kf-odata\**\*"
-             Exclude="templates\kf-odata\**\bin\**;
-                      templates\kf-odata\**\obj\**;
-                      templates\kf-odata\**\artifacts\**;
-                      templates\kf-odata\**\.vs\**;
-                      templates\kf-odata\**\*.user;
-                      templates\kf-odata\**\TestResults\**">
-      <PackagePath>content/kf-odata/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    <Content Include="templates\koreforge-odata\**\*" Exclude="templates\koreforge-odata\**\bin\**;                       templates\koreforge-odata\**\obj\**;                       templates\koreforge-odata\**\artifacts\**;                       templates\koreforge-odata\**\.vs\**;                       templates\koreforge-odata\**\*.user;                       templates\koreforge-odata\**\TestResults\**">
+      <PackagePath>content/koreforge-odata/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
   </ItemGroup>
-
 </Project>

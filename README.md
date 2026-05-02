@@ -6,9 +6,9 @@ NuGet template package providing `dotnet new` scaffolding for KoreForge applicat
 
 | Short name | Type | Description |
 |---|---|---|
-| `kf-kafka-processor` | Solution | Kafka consumer with Vue 3 dashboard, SignalR metrics, SQL live-reload settings, structured logging, health checks |
-| `kf-data` | Solution | EF Core data library with database-first scaffolding, partial DbContext, options, and DI registration |
-| `kf-odata` | Solution | OData controller library with Roslyn source-generated CRUD controllers from a DbContext |
+| `koreforge-kafka-processor` | Solution | Kafka consumer with Vue 3 dashboard, SignalR metrics, SQL live-reload settings, structured logging, health checks |
+| `koreforge-data` | Solution | EF Core data library with database-first scaffolding, partial DbContext, options, and DI registration |
+| `koreforge-odata` | Solution | OData controller library with Roslyn source-generated CRUD controllers from a DbContext |
 
 ## Install
 
@@ -21,7 +21,7 @@ dotnet new install KoreForge.Templates
 ### Kafka Processor
 
 ```powershell
-dotnet new kf-kafka-processor -n MyApp --KafkaTopic orders --DatabaseName OrderDb
+dotnet new koreforge-kafka-processor -n MyApp --KafkaTopic orders --DatabaseName OrderDb
 ```
 
 | Parameter | Default | Description |
@@ -33,12 +33,12 @@ dotnet new kf-kafka-processor -n MyApp --KafkaTopic orders --DatabaseName OrderD
 ### Data Library
 
 ```powershell
-dotnet new kf-data -n MyCompany.Data.Staff --DatabaseShort Staff
+dotnet new koreforge-data -n MyCompany.Data.Staff --DatabaseShort Staff
 ```
 
 | Parameter | Default | Description |
 |---|---|---|
-| `-n` | _(required)_ | Project name and namespace (replaces `KF.Data.Alerts`) |
+| `-n` | _(required)_ | Project name and namespace (replaces `KoreForge.Data.Alerts`) |
 | `--DatabaseShort` | `Alerts` | Short name for DbContext, options, methods (e.g. `Staff` → `StaffDbContext`) |
 
 After scaffolding, edit `config/scaffold-config.json` with your connection string and schemas, then run:
@@ -50,14 +50,14 @@ After scaffolding, edit `config/scaffold-config.json` with your connection strin
 ### OData Library
 
 ```powershell
-dotnet new kf-odata -n MyCompany.OData.Staff --DatabaseShort Staff --DataNamespace MyCompany.Data.Staff
+dotnet new koreforge-odata -n MyCompany.OData.Staff --DatabaseShort Staff --DataNamespace MyCompany.Data.Staff
 ```
 
 | Parameter | Default | Description |
 |---|---|---|
-| `-n` | _(required)_ | Project name and namespace (replaces `KF.OData.Alerts`) |
+| `-n` | _(required)_ | Project name and namespace (replaces `KoreForge.OData.Alerts`) |
 | `--DatabaseShort` | `Alerts` | Short name matching Data library (e.g. `Staff` → `StaffDbContext`) |
-| `--DataNamespace` | `KF.Data.Alerts` | Full namespace of the Data library where the DbContext lives |
+| `--DataNamespace` | `KoreForge.Data.Alerts` | Full namespace of the Data library where the DbContext lives |
 
 After scaffolding, add a `ProjectReference` to your Data library in the `.csproj`, build, then run:
 
@@ -73,9 +73,9 @@ After scaffolding, add a `ProjectReference` to your Data library in the `.csproj
 
 | Template | Source Location |
 |---|---|
-| `kf-kafka-processor` | `apps/EventProcessor/` (golden master — live app IS the template) |
-| `kf-data` | `templates/kf-data/` (standalone template archetype) |
-| `kf-odata` | `templates/kf-odata/` (standalone template archetype) |
+| `koreforge-kafka-processor` | `apps/EventProcessor/` (golden master — live app IS the template) |
+| `koreforge-data` | `templates/koreforge-data/` (standalone template archetype) |
+| `koreforge-odata` | `templates/koreforge-odata/` (standalone template archetype) |
 
 ### Local Development Install
 
@@ -84,8 +84,8 @@ After scaffolding, add a `ProjectReference` to your Data library in the `.csproj
 ./scr/install-local.ps1
 
 # Test scaffolding
-dotnet new kf-data -n TestData --DatabaseShort Test -o /tmp/TestData
-dotnet new kf-odata -n TestOData --DatabaseShort Test --DataNamespace TestData -o /tmp/TestOData
+dotnet new koreforge-data -n TestData --DatabaseShort Test -o /tmp/TestData
+dotnet new koreforge-odata -n TestOData --DatabaseShort Test --DataNamespace TestData -o /tmp/TestOData
 
 # Uninstall when done
 ./scr/uninstall-local.ps1
