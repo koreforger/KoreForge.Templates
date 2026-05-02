@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>KoreForge.OData.Alerts</RootNamespace>
@@ -9,15 +9,15 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KoreForge.OData" VersionOverride="1.0.1-alpha" />
+    <PackageReference Include="KoreForge.OData" VersionOverride="1.1.2" />
   </ItemGroup>
   <ItemGroup Condition="Exists('..\..\..\..\KoreForge.OData\src\KoreForge.OData.Generators\KoreForge.OData.Generators.csproj')">
-    <PackageReference Include="KoreForge.OData.Generators" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <PackageReference Include="KoreForge.OData.Generators" VersionOverride="1.1.2" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup Condition="!Exists('..\..\..\..\KoreForge.OData\src\KoreForge.OData.Generators\KoreForge.OData.Generators.csproj')">
-    <PackageReference Include="KoreForge.OData.Generators" OutputItemType="Analyzer" ReferenceOutputAssembly="false" VersionOverride="1.0.1-alpha" />
+    <PackageReference Include="KoreForge.OData.Generators" OutputItemType="Analyzer" ReferenceOutputAssembly="false" VersionOverride="1.1.2" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KoreForge.Data.Alerts" VersionOverride="1.0.1-alpha" />
+    <PackageReference Include="KoreForge.Data.Alerts" VersionOverride="1.1.2" />
   </ItemGroup>
 </Project>
