@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+    tags-ignore: ['**']   # tag pushes are handled by publish-nuget.yml
+  pull_request:
+
+jobs:
+  build-pack:
+    name: Build & Pack Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # MinVer needs full history to compute version
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Pack (verify template package assembles cleanly)
+        run: dotnet pack KoreForge.Templates.csproj -c Release -o artifacts/
