@@ -42,4 +42,10 @@
       <PackagePath>content/koreforge-odata/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
   </ItemGroup>
+  <!-- ── koreforge-aspnet template ───────────────────────────────────────────── -->
+  <ItemGroup>
+    <Content Include="templates\koreforge-aspnet\**\*" Exclude="templates\koreforge-aspnet\**\bin\**;                       templates\koreforge-aspnet\**\obj\**;                       templates\koreforge-aspnet\**\artifacts\**;                       templates\koreforge-aspnet\**\.vs\**;                       templates\koreforge-aspnet\**\*.user;                       templates\koreforge-aspnet\**\TestResults\**">
+      <PackagePath>content/koreforge-aspnet/%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/KoreForge.Host.Api/KoreForge.Host.Api.csproj" />
+  </Folder>
+  <Folder Name="/tst/">
+    <Project Path="tst/KoreForge.Host.Api.Tests/KoreForge.Host.Api.Tests.csproj" />
+  </Folder>
+</Solution>

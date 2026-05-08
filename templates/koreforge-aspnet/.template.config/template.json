@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "KoreForge",
+  "classifications": [ "Web", "ASP.NET Core", "KoreForge" ],
+  "identity": "KoreForge.Templates.AspNet",
+  "name": "KoreForge ASP.NET Core Host",
+  "shortName": "koreforge-aspnet",
+  "description": "A KoreForge ASP.NET Core host with lifecycle management, structured logging, health checks, and monitoring.",
+  "sourceName": "KoreForge.Host.Api",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template.config/**",
+        "**/bin/**",
+        "**/obj/**",
+        "**/artifacts/**",
+        "**/.vs/**",
+        "**/*.user",
+        "**/TestResults/**"
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Restore NuGet packages",
+      "manualInstructions": [ { "text": "Run 'dotnet restore'" } ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "args": {
+        "files": [ "src/**/*.csproj", "tst/**/*.csproj" ]
+      },
+      "continueOnError": true
+    }
+  ]
+}
